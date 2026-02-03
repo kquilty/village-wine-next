@@ -41,7 +41,7 @@ export default function InfoGrid() {
         </a>
         
         <div className="phone-link-wrapper">
-          <a className="phone-link" href="tel:6076428836">(607) 642-8836</a>
+          <p style={{ margin: 0 }}>Phone: <a className="phone-link" href="tel:6076428836">(607) 642-8836</a></p>
         </div>
       </div>
 
