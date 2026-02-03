@@ -9,6 +9,7 @@ interface EventItem {
     time: string;
     desc: string;
     type: "special" | "weekly";
+    flyer?: string;
 }
 
 const events: EventItem[] = [
@@ -19,7 +20,8 @@ const events: EventItem[] = [
         title: "Photo Booth & Candy Game",
         time: "4:00 PM - 7:00 PM",
         desc: "Join us for a photo booth, candy jar guessing contest, and our weekly tasting!",
-        type: "special"
+        type: "special",
+        flyer: "/event-flyer-2026-02-13.png"
     },
     {
         id: 2,
@@ -43,7 +45,7 @@ const events: EventItem[] = [
 
 export default function EventList() {
     const eventsRef = useRef<HTMLDivElement>(null);
-    const [isFlyerExpanded, setIsFlyerExpanded] = useState(false);
+    const [expandedFlyer, setExpandedFlyer] = useState<string | null>(null);
 
     useEffect(() => {
         // Intersection Observer for scroll-triggered animations
@@ -73,8 +75,8 @@ export default function EventList() {
             <h3 className="section-title">Upcoming Events</h3>
 
             {events.map((event) => (
-                <div key={event.id} className={event.id === 1 ? "event-item featured-event" : "event-item"}>
-                    {event.id === 1 ? (
+                <div key={event.id} className={event.flyer ? "event-item featured-event" : "event-item"}>
+                    {event.flyer ? (
                         <>
                             <div className="featured-top">
                                 <div className="event-date">
@@ -91,9 +93,9 @@ export default function EventList() {
                             </div>
                             <div className="event-flyer">
                                 <img 
-                                    src="/event-flyer-2026-02-13.png" 
+                                    src={event.flyer} 
                                     alt="Event Flyer" 
-                                    onClick={() => setIsFlyerExpanded(true)}
+                                    onClick={() => setExpandedFlyer(event.flyer!)}
                                     style={{ cursor: 'pointer' }}
                                     className="event-flyer-image"
                                 />
@@ -119,16 +121,18 @@ export default function EventList() {
 
             {/* Flyer Modal */}
             <div 
-                className={`modal-overlay ${isFlyerExpanded ? 'active' : ''}`} 
-                onClick={() => setIsFlyerExpanded(false)}
+                className={`modal-overlay ${expandedFlyer ? 'active' : ''}`} 
+                onClick={() => setExpandedFlyer(null)}
             >
                 <div className="flyer-modal-content" onClick={(e) => e.stopPropagation()}>
-                    <button className="modal-close" onClick={() => setIsFlyerExpanded(false)}>×</button>
-                    <img 
-                        src="/event-flyer-2026-02-13.png" 
-                        alt="Event Flyer - Full View" 
-                        className="flyer-modal-image"
-                    />
+                    <button className="modal-close" onClick={() => setExpandedFlyer(null)}>×</button>
+                    {expandedFlyer && (
+                        <img 
+                            src={expandedFlyer} 
+                            alt="Event Flyer - Full View" 
+                            className="flyer-modal-image"
+                        />
+                    )}
                 </div>
             </div>
         </div>
