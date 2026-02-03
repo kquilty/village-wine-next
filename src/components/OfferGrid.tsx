@@ -6,13 +6,26 @@ export default function OfferGrid() {
   const offersRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Add animate-in class after mount
+    // Intersection Observer for scroll-triggered animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
     if (offersRef.current) {
       const cards = offersRef.current.querySelectorAll('.offer-card');
       cards.forEach((card) => {
-        card.classList.add('animate-in');
+        observer.observe(card);
       });
     }
+
+    return () => observer.disconnect();
   }, []);
 
   return (

@@ -46,13 +46,26 @@ export default function EventList() {
   const [isFlyerExpanded, setIsFlyerExpanded] = useState(false);
 
   useEffect(() => {
-    // Add animate-in class after mount
+    // Intersection Observer for scroll-triggered animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
     if (eventsRef.current) {
       const items = eventsRef.current.querySelectorAll('.event-item');
       items.forEach((item) => {
-        item.classList.add('animate-in');
+        observer.observe(item);
       });
     }
+
+    return () => observer.disconnect();
   }, []);
 
   return (

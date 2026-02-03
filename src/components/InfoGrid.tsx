@@ -9,13 +9,26 @@ export default function InfoGrid() {
   const isToday = (dayIndex: number) => currentDay === dayIndex ? "today" : "";
 
   useEffect(() => {
-    // Add animate-in class after mount
+    // Intersection Observer for scroll-triggered animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
     if (cardsRef.current) {
       const cards = cardsRef.current.querySelectorAll('.info-card');
       cards.forEach((card) => {
-        card.classList.add('animate-in');
+        observer.observe(card);
       });
     }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
