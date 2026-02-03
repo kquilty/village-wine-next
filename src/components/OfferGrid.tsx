@@ -56,7 +56,7 @@ export default function OfferGrid() {
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
           <button className="modal-close" onClick={() => setIsModalOpen(false)}>×</button>
           <h2>Rewards Program</h2>
-          <p>Hello World</p>
+          <p>More info coming soon!</p>
         </div>
       </div>
     </>

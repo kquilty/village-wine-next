@@ -48,13 +48,13 @@ export default function InfoGrid() {
       {/* Hours Card with Dynamic Highlighting */}
       <div className="info-card">
         <h3>Hours</h3>
-        <p className={isToday(1)}><span style={{ display: "inline-block", width: "110px" }}>Monday:</span> 10am - 8pm</p>
-        <p className={isToday(2)}><span style={{ display: "inline-block", width: "110px" }}>Tuesday:</span> 10am - 8pm</p>
-        <p className={isToday(3)}><span style={{ display: "inline-block", width: "110px" }}>Wednesday:</span> 10am - 8pm</p>
-        <p className={isToday(4)}><span style={{ display: "inline-block", width: "110px" }}>Thursday:</span> 10am - 8pm</p>
-        <p className={isToday(5)}><span style={{ display: "inline-block", width: "110px" }}>Friday:</span> 10am - 8pm</p>
-        <p className={isToday(6)}><span style={{ display: "inline-block", width: "110px" }}>Saturday:</span> 10am - 8pm</p>
-        <p className={isToday(0)}><span style={{ display: "inline-block", width: "110px" }}>Sunday:</span> 12pm - 6pm</p>
+        <p data-day className={isToday(1)}><span style={{ display: "inline-block", width: "110px" }}>Monday:</span> 10am - 8pm</p>
+        <p data-day className={isToday(2)}><span style={{ display: "inline-block", width: "110px" }}>Tuesday:</span> 10am - 8pm</p>
+        <p data-day className={isToday(3)}><span style={{ display: "inline-block", width: "110px" }}>Wednesday:</span> 10am - 8pm</p>
+        <p data-day className={isToday(4)}><span style={{ display: "inline-block", width: "110px" }}>Thursday:</span> 10am - 8pm</p>
+        <p data-day className={isToday(5)}><span style={{ display: "inline-block", width: "110px" }}>Friday:</span> 10am - 8pm</p>
+        <p data-day className={isToday(6)}><span style={{ display: "inline-block", width: "110px" }}>Saturday:</span> 10am - 8pm</p>
+        <p data-day className={isToday(0)}><span style={{ display: "inline-block", width: "110px" }}>Sunday:</span> 12pm - 6pm</p>
       </div>
     </div>
   );
