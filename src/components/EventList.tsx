@@ -10,6 +10,7 @@ interface EventItem {
     desc: string;
     type: "special" | "weekly";
     flyer?: string;
+    expiration?: string; // Event expiration date (YYYY-MM-DD)
 }
 
 const events: EventItem[] = [
@@ -21,7 +22,8 @@ const events: EventItem[] = [
         time: "4:00 PM - 7:00 PM",
         desc: "Join us for a photo booth, candy jar guessing contest, and our weekly tasting!",
         type: "special",
-        flyer: "/event-flyer-2026-02-13.png"
+        flyer: "/event-flyer-2026-02-13.png",
+        expiration: "2026-02-14" // Event expires after Feb 13
     },
     {
         id: 2,
@@ -30,7 +32,8 @@ const events: EventItem[] = [
         title: "Valentine's Day Tasting",
         time: "Front Counter",
         desc: "Stop by our front counter for a special Valentine's Day tasting.",
-        type: "special"
+        type: "special",
+        expiration: "2026-02-15" // Event expires after Feb 14
     },
     {
         id: 3,
@@ -40,12 +43,24 @@ const events: EventItem[] = [
         time: "4:00 PM - 7:00 PM",
         desc: "Join us every Friday to sample our featured bottle of the week.",
         type: "weekly"
+        // No expiration - recurring weekly event
     }
 ];
 
 export default function EventList() {
     const eventsRef = useRef<HTMLDivElement>(null);
     const [expandedFlyer, setExpandedFlyer] = useState<string | null>(null);
+
+    // Helper to check if event is still valid (not expired)
+    const isEventValid = (event: EventItem) => {
+        if (!event.expiration) return true; // No expiration means always valid
+        const today = new Date();
+        const expiration = new Date(event.expiration);
+        return today < expiration;
+    };
+
+    // Filter out expired events
+    const activeEvents = events.filter(isEventValid);
 
     useEffect(() => {
         // Intersection Observer for scroll-triggered animations
@@ -74,7 +89,7 @@ export default function EventList() {
         <div className="events-container" ref={eventsRef}>
             <h3 className="section-title">Upcoming Events</h3>
 
-            {events.map((event) => (
+            {activeEvents.map((event) => (
                 <div key={event.id} className={event.flyer ? "event-item featured-event" : "event-item"}>
                     {event.flyer ? (
                         <>
