@@ -183,6 +183,8 @@ h1 {
 
 .contact-card h3 {
     text-align: center;
+    display: block;
+    width: 100%;
 }
 
 .contact-card p {
@@ -194,7 +196,7 @@ h1 {
 }
 
 .contact-card .phone-link-wrapper {
-    text-align: left;
+    text-align: center;
     margin-top: 16px;
     padding-top: 16px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -280,7 +282,7 @@ h1 {
     display: inline-flex;
     align-items: center;
     padding: 10px 16px;
-    margin: 8px 0;
+    margin: 8px auto;
     background: rgba(212, 175, 55, 0.1);
     border-radius: 8px;
     transition: all 0.3s ease;
