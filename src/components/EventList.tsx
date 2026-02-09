@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from 'react';
+import { getEventsFromDb, type DbEventItem } from '@/actions/events';
 
 interface EventItem {
     id: number;
@@ -13,43 +14,65 @@ interface EventItem {
     expiration?: string; // Event expiration date (YYYY-MM-DD)
 }
 
-const events: EventItem[] = [
-    {
-        id: 1,
-        month: "FEB",
-        day: "13",
-        title: "Photo Booth & Candy Game",
-        time: "4:00 PM - 7:00 PM",
-        desc: "Join us for a photo booth, candy jar guessing contest, and our weekly tasting!",
-        type: "special",
-        flyer: "/event-flyer-2026-02-13.png",
-        expiration: "2026-02-14" // Event expires after Feb 13
-    },
-    {
-        id: 2,
-        month: "FEB",
-        day: "14",
-        title: "Valentine's Day Tasting",
-        time: "Front Counter",
-        desc: "Stop by our front counter for a special Valentine's Day tasting.",
-        type: "special",
-        expiration: "2026-02-15" // Event expires after Feb 14
-    },
-    {
-        id: 3,
-        month: "FRI",
-        day: "WK",
-        title: "Friday Night Tasting",
-        time: "4:00 PM - 7:00 PM",
-        desc: "Join us every Friday to sample our featured bottle of the week.",
-        type: "weekly"
-        // No expiration - recurring weekly event
-    }
-];
+// const events: EventItem[] = [
+//     {
+//         id: 1,
+//         month: "FEB",
+//         day: "13",
+//         title: "Photo Booth & Candy Game",
+//         time: "4:00 PM - 7:00 PM",
+//         desc: "Join us for a photo booth, candy jar guessing contest, and our weekly tasting!",
+//         type: "special",
+//         flyer: "/event-flyer-2026-02-13.png",
+//         expiration: "2026-02-14" // Event expires after Feb 13
+//     },
+//     {
+//         id: 2,
+//         month: "FEB",
+//         day: "14",
+//         title: "Valentine's Day Tasting",
+//         time: "Front Counter",
+//         desc: "Stop by our front counter for a special Valentine's Day tasting.",
+//         type: "special",
+//         expiration: "2026-02-15" // Event expires after Feb 14
+//     },
+//     {
+//         id: 3,
+//         month: "FRI",
+//         day: "WK",
+//         title: "Friday Night Tasting",
+//         time: "4:00 PM - 7:00 PM",
+//         desc: "Join us every Friday to sample our featured bottle of the week.",
+//         type: "weekly"
+//         // No expiration - recurring weekly event
+//     }
+// ];
 
 export default function EventList() {
     const eventsRef = useRef<HTMLDivElement>(null);
     const [expandedFlyer, setExpandedFlyer] = useState<string | null>(null);
+    const [events, setEvents] = useState<EventItem[]>([]);
+
+    // Fetch events from database on component mount
+    useEffect(() => {
+        getEventsFromDb().then((dbEvents) => {
+            // Map database fields to EventItem interface
+            const mappedEvents: EventItem[] = dbEvents.map((dbEvent) => ({
+                id: dbEvent.id,
+                month: dbEvent.month,
+                day: dbEvent.day,
+                title: dbEvent.title,
+                time: dbEvent.time,
+                desc: dbEvent.description,
+                type: dbEvent.type as "special" | "weekly",
+                flyer: dbEvent.flyer_source || undefined,
+                expiration: dbEvent.expiration_date || undefined
+            }));
+            setEvents(mappedEvents);
+
+            console.log("Fetched events from database:", mappedEvents);
+        });
+    }, []);
 
     // Helper to check if event is still valid (not expired)
     const isEventValid = (event: EventItem) => {
@@ -83,7 +106,16 @@ export default function EventList() {
         }
 
         return () => observer.disconnect();
-    }, []);
+    }, [activeEvents.length]);
+
+    if (activeEvents.length === 0) {
+        return (
+            <div className="events-container" ref={eventsRef}>
+                <h3 className="section-title">Upcoming Events</h3>
+                <p style={{ fontStyle: 'italic', color: '#888', textAlign: 'center' }}>No upcoming events at the moment.<br />Check back soon!</p>
+            </div>
+        );
+    }
 
     return (
         <div className="events-container" ref={eventsRef}>
