@@ -1,14 +1,14 @@
 
 /* --- CSS Variables & Reset --- */
 :root {
-    --primary-gold: #D4AF37;
-    --gold-bright: #FFD700;
-    --gold-light: #f4e4b0;
-    --text-light: #f4f4f4;
-    --text-dim: #cccccc;
-    --bg-overlay: rgba(0, 0, 0, 0.5);
-    --glass-bg: rgba(35, 35, 35, 0.75);
-    --glass-border: rgba(255, 255, 255, 0.15);
+    --primary-gold: #6f9a82;
+    --gold-bright: #8ab59a;
+    --gold-light: #e6f0e9;
+    --text-light: #f5f3ed;
+    --text-dim: #c8c2b8;
+    --bg-overlay: rgba(14, 18, 16, 0.42);
+    --glass-bg: rgba(36, 40, 38, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.12);
     --accent-purple: #9b59b6;
     --accent-blue: #3498db;
 }
@@ -23,13 +23,31 @@ html {
     scroll-behavior: smooth;
 }
 
+.seo-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.seo-only h1,
+.seo-only p {
+    margin: 0;
+}
+
 body {
     font-family: 'Lato', sans-serif;
     color: var(--text-light);
     min-height: 100vh;
     overflow-x: hidden;
     background-color: #1a1a1a;
-    background-image: url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=2940&auto=format&fit=crop');
+    background-image: url('/wine_bg_2.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -75,12 +93,51 @@ body::before {
 
 /* --- Logo --- */
 .logo {
-    max-width: 200px;
-    max-height: 250px;
-    margin: 20px auto 30px;
+    /* max-width: 300px; */
+    max-height: 400px;
+    margin: 20px auto 12px;
     display: block;
     filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.3));
     animation: fadeIn 1s ease-out;
+}
+
+.hero-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+
+.hero-tagline {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+    margin: -18px 0 48px;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    letter-spacing: 0.6px;
+}
+
+.hero-tagline p {
+    margin: 0;
+    font-weight: 650;
+    font-size: 1.3rem;
+    opacity: 0.84;
+    letter-spacing: 0.2px;
+    font-variant: small-caps;
+    background: linear-gradient(135deg, #fbf8ef, var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.18);
+}
+
+.tagline-nowrap {
+    white-space: nowrap;
 }
 
 /* --- Typography --- */
@@ -148,6 +205,7 @@ h1 {
     text-align: left;
 }
 
+
 .info-card {
     padding: 20px;
     border-radius: 12px;
@@ -178,7 +236,10 @@ h1 {
 
 /* Centered contact card */
 .contact-card {
-    text-align: left;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .contact-card h3 {
@@ -187,19 +248,16 @@ h1 {
     width: 100%;
 }
 
-.contact-card p {
-    margin-bottom: 2px;
-}
-
-.contact-card > *:not(:last-child) {
-    margin-bottom: 12px;
-}
-
 .contact-card .phone-link-wrapper {
     text-align: center;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.hours-card h3 {
+    align-self: stretch;
+    text-align: center;
 }
 
 .info-card h3 {
@@ -210,9 +268,9 @@ h1 {
     background-clip: text;
     font-size: 1.2rem;
     margin-bottom: 15px;
-    border-bottom: 2px solid rgba(212, 175, 55, 0.4);
-    padding-bottom: 8px;
-    display: inline-block;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+    padding-bottom: 10px;
+    display: block;
     filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
 }
 
@@ -241,16 +299,18 @@ h1 {
 }
 
 .info-card p[data-day].today {
-    background-color: rgba(212, 175, 55, 0.2);
+    background-color: rgba(138, 181, 154, 0.3);
+    box-shadow: 0 0 0 1px rgba(138, 181, 154, 0.35);
 }
 
 .info-card p[data-day].today::after {
     content: '• Today';
-    font-size: 0.75rem;
-    color: var(--primary-gold);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gold-bright);
     margin-left: 10px;
     font-style: italic;
-    opacity: 0.8;
+    opacity: 0.95;
     letter-spacing: 0.5px;            position: absolute;
     white-space: nowrap;
     left: 100%;
@@ -283,16 +343,20 @@ h1 {
     align-items: center;
     padding: 10px 16px;
     margin: 8px auto;
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(111, 154, 130, 0.2);
+    border: 1px solid rgba(111, 154, 130, 0.35);
     border-radius: 8px;
     transition: all 0.3s ease;
     min-height: 44px;
     width: fit-content;
+    box-shadow: 0 0 0 1px rgba(138, 181, 154, 0.25), 0 6px 16px rgba(111, 154, 130, 0.2);
 }
 
 .directions-link:hover {
-    background: rgba(212, 175, 55, 0.2);
+    background: rgba(111, 154, 130, 0.3);
+    box-shadow: 0 6px 16px rgba(111, 154, 130, 0.25);
     transform: translateX(3px);
+    color: #ffffff;
 }
 
 /* Focus states for accessibility */
@@ -348,6 +412,7 @@ button:focus {
 .events-container {
     text-align: left;
     margin-bottom: 35px;
+    margin-top: 64px;
 }
 
 .section-title {
@@ -357,9 +422,9 @@ button:focus {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
-    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+    filter: drop-shadow(0 2px 8px rgba(111, 154, 130, 0.35));
 }
 
 .event-item {
@@ -394,7 +459,7 @@ button:focus {
     box-shadow: 
         0 4px 20px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    border-color: rgba(212, 175, 55, 0.3);
+    border-color: rgba(111, 154, 130, 0.35);
 }
 
 /* The Date Box (Left Side) */
@@ -407,19 +472,19 @@ button:focus {
     margin-right: 20px;
     color: var(--gold-bright);
     font-family: 'Cinzel', serif;
-    border: 2px solid rgba(212, 175, 55, 0.4);
+    border: 2px solid rgba(111, 154, 130, 0.45);
     border-radius: 12px;
     padding: 12px 8px;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(135deg, rgba(111, 154, 130, 0.18), rgba(0, 0, 0, 0.3));
     box-shadow: 
-        0 4px 15px rgba(212, 175, 55, 0.2),
+        0 4px 15px rgba(111, 154, 130, 0.22),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
 }
 
 .event-item:hover .event-date {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 6px 20px rgba(111, 154, 130, 0.35);
 }
 
 .event-date .month {
@@ -494,7 +559,7 @@ button:focus {
 .offers-section h2 {
     font-family: 'Cinzel', serif;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-bottom: 30px;
     background: linear-gradient(135deg, var(--gold-bright), var(--primary-gold));
     -webkit-background-clip: text;
@@ -777,8 +842,16 @@ footer {
         text-align: center;
     }
 
+    .info-grid .info-card {
+        max-width: 460px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
     .info-card h3 {
-        border-bottom: none; /* Remove underline on center stack for cleaner look */
+        border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+        padding-bottom: 10px;
+        display: block;
     }
     
     .offers-grid {
@@ -789,10 +862,14 @@ footer {
     /* Center contact card content on mobile */
     .contact-card {
         text-align: center !important;
+        gap: 6px;
     }
     
     .contact-card h3 {
         text-align: center !important;
+        width: 100%;
+        display: block;
+        align-self: stretch;
     }
     
     .contact-card .directions-link {
@@ -801,6 +878,17 @@ footer {
     
     .contact-card .phone-link-wrapper {
         text-align: center !important;
+    }
+
+    .contact-card .phone-link {
+        min-height: auto;
+        padding: 4px 8px;
+        display: inline-block;
+    }
+
+    .contact-card .directions-link {
+        min-height: auto;
+        padding: 8px 12px;
     }
     
     /* Center hours list on mobile */

@@ -33,11 +33,13 @@ export default function InfoGrid() {
 
     return (
         <div className="info-grid" ref={cardsRef}>
-            {/* Contact Card */}
             <div className="info-card contact-card">
                 <h3>Visit Us or Call</h3>
+                <div className="phone-link-wrapper">
+                    <a className="phone-link" href="tel:6076428836">(607) 642-8836</a>
+                </div>
                 <p style={{ textAlign: "center" }}>20 South Main Street</p>
-                <p style={{ marginTop: "-8px", textAlign: "center" }}>Newark Valley, NY 13811</p>
+                <p style={{ textAlign: "center" }}>Newark Valley, NY 13811</p>
                 
                 <div style={{ textAlign: "center" }}>
                     <a 
@@ -54,14 +56,10 @@ export default function InfoGrid() {
                         Get Directions
                     </a>
                 </div>
-                
-                <div className="phone-link-wrapper">
-                    <a className="phone-link" href="tel:6076428836">(607) 642-8836</a>
-                </div>
             </div>
 
             {/* Hours Card with Dynamic Highlighting */}
-            <div className="info-card" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div className="info-card hours-card" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <h3>Hours</h3>
                 <div>
                     <p data-day className={isToday(1)}><span style={{ display: "inline-block", width: "110px" }}>Monday:</span> 10am - 8pm</p>
