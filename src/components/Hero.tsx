@@ -14,6 +14,9 @@ export default function Hero() {
             </div>
             <div className="hero-tagline">
                 <p>(test branch)</p>
+                {process.env.VERCEL_ENV                        ? <p>Vercel Environment: {process.env.VERCEL_ENV}</p> : <p>Vercel Environment: Not Set</p>}
+                {process.env.APP_ENV                           ? <p>App Environment: {process.env.APP_ENV}</p> : <p>App Environment: Not Set</p>}
+                {process.env.NODE_ENV                          ? <p>Node Environment: {process.env.NODE_ENV}</p> : <p>Node Environment: Not Set</p>}
             </div>
 
             <div className="seo-only">
