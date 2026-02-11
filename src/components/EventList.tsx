@@ -77,9 +77,10 @@ export default function EventList() {
     // Helper to check if event is still valid (not expired)
     const isEventValid = (event: EventItem) => {
         if (!event.expiration) return true; // No expiration means always valid
-        const today = new Date();
-        const expiration = new Date(event.expiration);
-        return today < expiration;
+        const todayKey = getEasternDateKey();
+        const expirationKey = normalizeExpirationKey(event.expiration);
+        if (!expirationKey) return true;
+        return todayKey < expirationKey;
     };
 
     // Filter out expired events
@@ -184,4 +185,36 @@ export default function EventList() {
             </div>
         </div>
     );
+}
+
+function getEasternDateKey() {
+    const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    }).formatToParts(new Date());
+
+    const map = Object.fromEntries(
+        parts
+            .filter((part) => part.type !== "literal")
+            .map((part) => [part.type, part.value])
+    ) as Record<string, string>;
+
+    return `${map.year}-${map.month}-${map.day}`;
+}
+
+function normalizeExpirationKey(expiration: EventItem["expiration"]) {
+    if (!expiration) return null;
+    if (expiration instanceof Date) {
+        return expiration.toISOString().slice(0, 10);
+    }
+
+    const asString = String(expiration);
+    if (!asString) return null;
+    if (asString.includes("T")) {
+        return asString.slice(0, 10);
+    }
+
+    return asString;
 }

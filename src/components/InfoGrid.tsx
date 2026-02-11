@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 
 export default function InfoGrid() {
-    const currentDay = new Date().getDay(); // 0 = Sunday, 1 = Monday...
+    const currentDay = getEasternDayIndex(); // 0 = Sunday, 1 = Monday...
     const cardsRef = useRef<HTMLDivElement>(null);
 
     // Helper to check if it's today
@@ -73,4 +73,23 @@ export default function InfoGrid() {
             </div>
         </div>
     );
+}
+
+function getEasternDayIndex() {
+    const weekday = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        weekday: "short",
+    }).format(new Date());
+
+    const weekdayMap: Record<string, number> = {
+        Sun: 0,
+        Mon: 1,
+        Tue: 2,
+        Wed: 3,
+        Thu: 4,
+        Fri: 5,
+        Sat: 6,
+    };
+
+    return weekdayMap[weekday] ?? new Date().getDay();
 }
