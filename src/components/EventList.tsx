@@ -11,7 +11,7 @@ interface EventItem {
     desc: string;
     type: "special" | "weekly";
     flyer?: string;
-    expiration?: string; // Event expiration date (YYYY-MM-DD)
+    expiration?: string | Date; // Event expiration date (YYYY-MM-DD) or Date instance
 }
 
 // const events: EventItem[] = [
