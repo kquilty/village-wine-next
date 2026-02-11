@@ -873,6 +873,7 @@ footer {
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
     .subtitle { font-size: 1rem; }
+    .logo { max-height: 320px; }
     
     .info-grid {
         grid-template-columns: 1fr; /* Stack columns on mobile */
