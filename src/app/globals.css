@@ -1,6 +1,9 @@
 
+@import url('https://fonts.googleapis.com/css2?family=SN+Pro:wght@400;600;700&display=swap');
+
 /* --- CSS Variables & Reset --- */
 :root {
+    --font-display: 'SN Pro', serif;
     --primary-gold: #6f9a82;
     --gold-bright: #8ab59a;
     --gold-light: #e6f0e9;
@@ -42,7 +45,7 @@ html {
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     color: var(--text-light);
     min-height: 100vh;
     overflow-x: hidden;
@@ -55,6 +58,21 @@ body {
     align-items: center;
     justify-content: center;
     padding: 40px 0;
+}
+
+/* Body copy stays in Lato for readability */
+p,
+li,
+a,
+button,
+input,
+textarea,
+select,
+.badge,
+.event-time,
+.email-link,
+footer {
+    font-family: var(--font-lato), 'Lato', sans-serif;
 }
 
 /* --- Overlay to darken image --- */
@@ -142,7 +160,7 @@ body::before {
 
 /* --- Typography --- */
 h1 {
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     font-size: 3rem;
     letter-spacing: 2px;
     margin-bottom: 0.2rem;
@@ -151,7 +169,7 @@ h1 {
 }
 
 .subtitle {
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     font-size: 1.2rem;
     color: var(--primary-gold);
     margin-bottom: 30px;
@@ -261,7 +279,7 @@ h1 {
 }
 
 .info-card h3 {
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     background: linear-gradient(135deg, var(--gold-bright), var(--primary-gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -346,17 +364,22 @@ h1 {
     background: rgba(111, 154, 130, 0.2);
     border: 1px solid rgba(111, 154, 130, 0.35);
     border-radius: 8px;
-    transition: all 0.3s ease;
+    color: #ffffff;
+    transition: box-shadow 0.5s ease, transform 0.5s ease;
     min-height: 44px;
     width: fit-content;
     box-shadow: 0 0 0 1px rgba(138, 181, 154, 0.25), 0 6px 16px rgba(111, 154, 130, 0.2);
 }
 
 .directions-link:hover {
-    background: rgba(111, 154, 130, 0.3);
-    box-shadow: 0 6px 16px rgba(111, 154, 130, 0.25);
-    transform: translateX(3px);
+    box-shadow: 0 0 0 1px rgba(138, 181, 154, 0.35), 0 0 24px rgba(138, 181, 154, 0.55);
+    transform: translateX(2px) scale(1.02);
     color: #ffffff;
+}
+
+.info-card a.directions-link,
+.info-card a.directions-link:hover {
+    color: #ffffff !important;
 }
 
 /* Focus states for accessibility */
@@ -381,7 +404,7 @@ button:focus {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     font-size: 1.1rem;
     margin-bottom: 15px;
     filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
@@ -417,7 +440,7 @@ button:focus {
 
 .section-title {
     text-align: center;
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     background: linear-gradient(135deg, var(--gold-bright), var(--primary-gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -471,7 +494,7 @@ button:focus {
     min-width: 70px;
     margin-right: 20px;
     color: var(--gold-bright);
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     border: 2px solid rgba(111, 154, 130, 0.45);
     border-radius: 12px;
     padding: 12px 8px;
@@ -557,7 +580,7 @@ button:focus {
 }
 
 .offers-section h2 {
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 30px;
@@ -617,7 +640,7 @@ button:focus {
 }
 
 .offer-card h3 {
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     color: var(--gold-bright);
     font-size: 1.1rem;
     margin-bottom: 12px;
@@ -709,7 +732,7 @@ button:focus {
 }
 
 .modal-content h2 {
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     background: linear-gradient(135deg, var(--gold-bright), var(--primary-gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -788,7 +811,7 @@ button:focus {
 }
 
 .follow-section h3 {
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-display), 'SN Pro', serif;
     color: var(--text-dim);
     font-size: 0.9rem;
     margin-bottom: 12px;

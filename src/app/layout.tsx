@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { Cinzel, Lato } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 
-const cinzel = Cinzel({
-    weight: ["400", "700"],
-    subsets: ["latin"],
-    variable: "--font-cinzel",
-});
 
 const lato = Lato({
     weight: ["300", "400", "700"],
@@ -26,7 +21,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${cinzel.variable} ${lato.variable}`}>
+            <body className={lato.variable}>
                 {children}
             </body>
         </html>
