@@ -3,6 +3,9 @@ import { neon } from '@neondatabase/serverless';
 const appEnv = process.env.APP_ENV;
 const vercelEnv = process.env.VERCEL_ENV;
 
+console.log(`App Environment: ${appEnv}`);
+console.log(`Vercel Environment: ${vercelEnv}`);
+
 function getDatabaseUrl() {
   if (vercelEnv === "production") {
     return process.env.DATABASE_URL;
