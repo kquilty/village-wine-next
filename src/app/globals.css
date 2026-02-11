@@ -257,7 +257,7 @@ h1 {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0;
 }
 
 .contact-card h3 {
@@ -269,8 +269,15 @@ h1 {
 .contact-card .phone-link-wrapper {
     text-align: center;
     margin-top: 0;
+    margin-bottom: 16px;
     padding-top: 0;
     border-top: none;
+}
+
+.contact-address {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.1;
 }
 
 .hours-card h3 {
@@ -284,7 +291,7 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 15px;
     border-bottom: 1px solid rgba(212, 175, 55, 0.22);
     padding-bottom: 10px;
@@ -329,11 +336,13 @@ h1 {
     margin-left: 10px;
     font-style: italic;
     opacity: 0.95;
-    letter-spacing: 0.5px;            position: absolute;
+    letter-spacing: 0.5px;
+    position: absolute;
     white-space: nowrap;
     left: 100%;
     top: 50%;
-    transform: translateY(-50%);        }
+    transform: translateY(-50%);
+}
 
 /* Enhanced CTA links */
 .phone-link-wrapper {

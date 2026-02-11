@@ -38,8 +38,8 @@ export default function InfoGrid() {
                 <div className="phone-link-wrapper">
                     <a className="phone-link" href="tel:6076428836">(607) 642-8836</a>
                 </div>
-                <p style={{ textAlign: "center" }}>20 South Main Street</p>
-                <p style={{ textAlign: "center" }}>Newark Valley, NY 13811</p>
+                <p className="contact-address" style={{ textAlign: "center" }}>20 South Main Street</p>
+                <p className="contact-address" style={{ textAlign: "center" }}>Newark Valley, NY 13811</p>
                 
                 <div style={{ textAlign: "center" }}>
                     <a 
