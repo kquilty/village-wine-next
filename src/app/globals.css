@@ -838,6 +838,20 @@ footer {
     color: var(--text-dim);
 }
 
+.admin-link {
+    margin-left: 8px;
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.3;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease;
+}
+
+.admin-link:hover,
+.admin-link:focus-visible {
+    opacity: 0.65;
+}
+
 /* --- Animations --- */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -1164,6 +1178,25 @@ footer {
 .admin-error {
     margin-top: 12px;
     color: #f0b6b6;
+}
+
+.admin-footer {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-back-link {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+}
+
+.admin-back-link:hover,
+.admin-back-link:focus-visible {
+    color: var(--gold-bright);
 }
 
 @media (max-width: 720px) {

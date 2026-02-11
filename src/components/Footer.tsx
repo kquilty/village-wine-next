@@ -24,6 +24,9 @@ export default function Footer() {
 
             <footer>
                 © 2026 Village Wine and Spirits. All Rights Reserved.
+                <a className="admin-link" href="/admin" aria-label="Admin">
+                    •
+                </a>
             </footer>
         </>
     );

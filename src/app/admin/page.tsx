@@ -490,6 +490,11 @@ export default function AdminPage() {
                             </div>
                         )}
                     </section>
+                    <footer className="admin-footer">
+                        <a className="admin-back-link" href="/">
+                            Return to site
+                        </a>
+                    </footer>
                 </>
             )}
         </main>
