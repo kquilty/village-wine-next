@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import {
+    useEffect,
+    useMemo,
+    useState,
+    type ChangeEvent,
+    type FormEvent,
+} from "react";
 import {
     createEvent,
     deleteEvent,
@@ -82,6 +88,7 @@ export default function AdminPage() {
     const [status, setStatus] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [busy, setBusy] = useState(false);
+    const [flyerInputKey, setFlyerInputKey] = useState(0);
 
     const [password, setPassword] = useState("");
     const [isAuthed, setIsAuthed] = useState(false);
@@ -156,6 +163,33 @@ export default function AdminPage() {
     function resetForm() {
         setEditingId(null);
         setDraft(emptyDraft);
+        setFlyerInputKey((prev) => prev + 1);
+    }
+
+    function handleFlyerUpload(event: ChangeEvent<HTMLInputElement>) {
+        const file = event.target.files?.[0];
+        if (!file) return;
+        if (!file.type.startsWith("image/")) {
+            setError("Please select an image file.");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            const result = reader.result;
+            if (typeof result === "string") {
+                setDraft({ ...draft, flyerSource: result });
+            }
+        };
+        reader.onerror = () => {
+            setError("Unable to read the image file.");
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function clearFlyer() {
+        setDraft({ ...draft, flyerSource: "" });
+        setFlyerInputKey((prev) => prev + 1);
     }
 
     async function handleSave(event: FormEvent) {
@@ -331,20 +365,37 @@ export default function AdminPage() {
                                     placeholder="Describe the event"
                                 />
                             </label>
-                            <label className="admin-label admin-field--full">
-                                Flyer image URL
-                                <input
-                                    className="admin-input"
-                                    value={draft.flyerSource}
-                                    onChange={(event) =>
-                                        setDraft({
-                                            ...draft,
-                                            flyerSource: event.target.value,
-                                        })
-                                    }
-                                    placeholder="/event-flyer-2026-02-13.png"
-                                />
-                            </label>
+                            <div className="admin-field--full">
+                                <label className="admin-label" htmlFor="admin-flyer">
+                                    Flyer image upload
+                                </label>
+                                <div className="admin-flyer-controls">
+                                    <input
+                                        key={flyerInputKey}
+                                        id="admin-flyer"
+                                        type="file"
+                                        accept="image/*"
+                                        className="admin-input"
+                                        onChange={handleFlyerUpload}
+                                    />
+                                    <button
+                                        type="button"
+                                        className="admin-button secondary"
+                                        onClick={clearFlyer}
+                                        disabled={!draft.flyerSource}
+                                    >
+                                        Clear flyer
+                                    </button>
+                                </div>
+                                {draft.flyerSource && (
+                                    <div className="admin-flyer-preview">
+                                        <img
+                                            src={draft.flyerSource}
+                                            alt="Flyer preview"
+                                        />
+                                    </div>
+                                )}
+                            </div>
                             <label className="admin-label">
                                 Expiration date
                                 <input
