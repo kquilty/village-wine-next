@@ -32,7 +32,7 @@ const emptyDraft: EventDraft = {
     month: "",
     day: "",
     title: "",
-    time: "",
+    time: "4:00 PM - 7:00 PM",
     description: "",
     type: "special",
     flyerSource: "",
