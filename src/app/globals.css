@@ -462,6 +462,29 @@ button:focus {
     margin-top: 64px;
 }
 
+/* --- Promotions Section --- */
+.promotions-container {
+    text-align: left;
+    margin-bottom: 35px;
+    margin-top: 64px;
+}
+
+.promotions-placeholder {
+    font-style: italic;
+    color: #888;
+    text-align: center;
+}
+
+.promotions-item {
+    justify-content: center;
+    text-align: center;
+}
+
+.promotions-item .promotions-placeholder {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
 .section-title {
     text-align: center;
     font-family: var(--font-display), 'SN Pro', serif;
@@ -621,6 +644,11 @@ button:focus {
     gap: 20px;
 }
 
+.offers-grid--centered {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+    justify-content: center;
+}
+
 .offer-card {
     padding: 25px 20px;
     border-radius: 12px;
@@ -675,6 +703,14 @@ button:focus {
     color: var(--text-light);
     font-size: 0.95rem;
     line-height: 1.6;
+}
+
+.promotions-date {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
 }
 
 .offer-highlight {
@@ -917,7 +953,7 @@ footer {
     }
     
     .offers-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
     
@@ -984,6 +1020,12 @@ footer {
     .info-card a {
         min-height: 48px;
         padding: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .offers-grid {
+        grid-template-columns: 1fr;
     }
 }
 
