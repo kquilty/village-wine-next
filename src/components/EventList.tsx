@@ -111,9 +111,18 @@ export default function EventList() {
 
     if (activeEvents.length === 0) {
         return (
+
             <div className="events-container" ref={eventsRef}>
                 <h3 className="section-title">Upcoming Events</h3>
                 <p style={{ fontStyle: 'italic', color: '#888', textAlign: 'center' }}>No upcoming events at the moment.<br />Check back soon!</p>
+                
+                <div className="hero-tagline">
+                    <p>(test branch)</p>
+                    {process.env.VERCEL_ENV                        ? <p>Vercel Environment: {process.env.VERCEL_ENV}</p> : <p>Vercel Environment: Not Set</p>}
+                    {process.env.APP_ENV                           ? <p>App Environment: {process.env.APP_ENV}</p> : <p>App Environment: Not Set</p>}
+                    {process.env.NODE_ENV                          ? <p>Node Environment: {process.env.NODE_ENV}</p> : <p>Node Environment: Not Set</p>}
+                    {process.env.DATABASE_URL                      ? <p>Database URL: {process.env.DATABASE_URL}</p> : <p>Database URL: Not Set</p>}
+                </div>
             </div>
         );
     }
