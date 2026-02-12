@@ -462,6 +462,29 @@ button:focus {
     margin-top: 64px;
 }
 
+/* --- Promotions Section --- */
+.promotions-container {
+    text-align: left;
+    margin-bottom: 35px;
+    margin-top: 64px;
+}
+
+.promotions-placeholder {
+    font-style: italic;
+    color: #888;
+    text-align: center;
+}
+
+.promotions-item {
+    justify-content: center;
+    text-align: center;
+}
+
+.promotions-item .promotions-placeholder {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
 .section-title {
     text-align: center;
     font-family: var(--font-display), 'SN Pro', serif;
