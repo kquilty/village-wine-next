@@ -24,6 +24,7 @@
 
 html {
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 .seo-only {
@@ -48,16 +49,43 @@ body {
     font-family: var(--font-display), 'SN Pro', serif;
     color: var(--text-light);
     min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     overflow-x: hidden;
     background-color: #1a1a1a;
-    background-image: url('/wine_bg_2.webp');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 40px 0;
+    position: relative;
+}
+
+/* --- Static background image --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/wine_bg_2.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    transform: translateZ(0);
+}
+
+/* --- Overlay to darken image --- */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-overlay);
+    z-index: -1;
 }
 
 /* Body copy stays in Lato for readability */
@@ -73,18 +101,6 @@ select,
 .email-link,
 footer {
     font-family: var(--font-lato), 'Lato', sans-serif;
-}
-
-/* --- Overlay to darken image --- */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-overlay);
-    z-index: -1;
 }
 
 /* --- Main Container --- */
