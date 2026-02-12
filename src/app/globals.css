@@ -14,6 +14,8 @@
     --glass-border: rgba(255, 255, 255, 0.12);
     --accent-purple: #9b59b6;
     --accent-blue: #3498db;
+    --nav-height: 60px;
+    --nav-bg: rgba(18, 22, 20, 0.6);
 }
 
 * {
@@ -56,8 +58,128 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 0;
+    padding: 0;
     position: relative;
+}
+
+.page-shell {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+/* --- Sticky Navigation --- */
+.site-nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1000;
+}
+
+.nav-inner {
+    max-width: 920px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.nav-logo img {
+    height: 34px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(111, 154, 130, 0.25));
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-link {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.4px;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: var(--primary-gold);
+}
+
+.nav-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-dim);
+    border-radius: 999px;
+    transition: background 0.2s ease;
+}
+
+.nav-toggle:hover span,
+.nav-toggle:focus-visible span {
+    background: var(--primary-gold);
+}
+
+.nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 24px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-menu.open {
+    max-height: 260px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 12px 24px 18px;
+}
+
+#phone,
+#address,
+#hours,
+#events,
+#promotions,
+#offers,
+#contact {
+    scroll-margin-top: calc(var(--nav-height) + 16px);
 }
 
 /* --- Static background image --- */
@@ -109,6 +231,7 @@ footer {
     padding: 40px;
     text-align: center;
     position: relative;
+    margin-top: 20px;
     
     /* Enhanced Glassmorphism Effect */
     background: linear-gradient(135deg, rgba(35, 35, 35, 0.9), rgba(20, 20, 20, 0.85));
@@ -931,6 +1054,26 @@ footer {
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+    }
+
+    .nav-menu {
+        display: flex;
+    }
+
+    .nav-inner {
+        padding: 0 16px;
+    }
+
+    .nav-logo img {
+        height: 30px;
+    }
+
     h1 { font-size: 2rem; }
     .subtitle { font-size: 1rem; }
     .logo { max-height: 320px; }

@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <>
+        <div id="contact" className="contact-section">
             <div className="email-section">
                 <p className="email-section-title">Contact Management</p>
                 <div className="email-list">
@@ -28,6 +28,6 @@ export default function Footer() {
                     •
                 </a>
             </footer>
-        </>
+        </div>
     );
 }
