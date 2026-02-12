@@ -644,6 +644,11 @@ button:focus {
     gap: 20px;
 }
 
+.offers-grid--centered {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+    justify-content: center;
+}
+
 .offer-card {
     padding: 25px 20px;
     border-radius: 12px;
@@ -940,7 +945,7 @@ footer {
     }
     
     .offers-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
     
@@ -1007,6 +1012,12 @@ footer {
     .info-card a {
         min-height: 48px;
         padding: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .offers-grid {
+        grid-template-columns: 1fr;
     }
 }
 
