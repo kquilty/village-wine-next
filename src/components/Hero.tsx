@@ -3,7 +3,7 @@ export default function Hero() {
         <>
             <div className="hero-top">
                 <img 
-                    src="/village-was-logo-white-no_subtext.png" 
+                    src="/white-logo-real-grapes2.png" 
                     alt="Village Wine & Spirits Logo" 
                     className="logo" 
                 />
