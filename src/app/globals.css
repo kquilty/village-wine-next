@@ -705,6 +705,14 @@ button:focus {
     line-height: 1.6;
 }
 
+.promotions-date {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
 .offer-highlight {
     color: var(--gold-bright);
     font-weight: 700;

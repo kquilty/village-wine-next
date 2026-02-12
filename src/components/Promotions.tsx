@@ -6,28 +6,32 @@ interface PromotionItem {
     id: number;
     title: string;
     description: string;
+    dateRange: string;
     icon?: string;
 }
 
 const promotions: PromotionItem[] = [
-    {
-        id: 1,
-        title: "Winter Wine Bundle",
-        description: "Mix-and-match any 6 bottles for 10% off.",
-        icon: "🍷",
-    },
-    {
-        id: 2,
-        title: "Whiskey Weekend",
-        description: "Save $5 on select local bourbons this weekend.",
-        icon: "🥃",
-    },
-    {
-        id: 3,
-        title: "Charcuterie Pairing",
-        description: "Grab a board and get 15% off any featured red.",
-        icon: "🧀",
-    },
+    // {
+    //     id: 1,
+    //     title: "Winter Wine Bundle",
+    //     description: "Mix-and-match any 6 bottles for 10% off.",
+    //     dateRange: "Feb 10 - Feb 24",
+    //     icon: "🍷",
+    // },
+    // {
+    //     id: 2,
+    //     title: "Whiskey Weekend",
+    //     description: "Save $5 on select local bourbons this weekend.",
+    //     dateRange: "Feb 15 - Feb 16",
+    //     icon: "🥃",
+    // },
+    // {
+    //     id: 3,
+    //     title: "Charcuterie Pairing",
+    //     description: "Grab a board and get 15% off any featured red.",
+    //     dateRange: "Ends Feb 28",
+    //     icon: "🧀",
+    // },
 ];
 
 export default function Promotions() {
@@ -67,7 +71,7 @@ export default function Promotions() {
 
     return (
         <div className="promotions-container" ref={promotionsRef}>
-            <h3 className="section-title">Current Promotions</h3>
+            <h3 className="section-title">Limited-Time Promotions</h3>
             <div className={promotionsGridClassName}>
                 {promotions.map((promotion) => (
                     <div key={promotion.id} className="offer-card">
@@ -75,6 +79,7 @@ export default function Promotions() {
                             <div className="offer-icon">{promotion.icon}</div>
                         ) : null}
                         <h3>{promotion.title}</h3>
+                        <p className="promotions-date">{promotion.dateRange}</p>
                         <p>{promotion.description}</p>
                     </div>
                 ))}
