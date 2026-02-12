@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface SiteNavProps {
     hasPromotions: boolean;
@@ -8,6 +8,8 @@ interface SiteNavProps {
 
 export default function SiteNav({ hasPromotions }: SiteNavProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [showTitle, setShowTitle] = useState(false);
 
     const navLinks = useMemo(() => {
         const baseLinks = [
@@ -37,14 +39,34 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
     const handleToggle = () => setIsOpen((open) => !open);
     const handleLinkClick = () => setIsOpen(false);
 
+    useEffect(() => {
+        const updateScrollState = () => {
+            setIsScrolled(window.scrollY > 8);
+
+            const heroLogo = document.getElementById("hero-logo");
+            if (!heroLogo) {
+                return;
+            }
+
+            const logoRect = heroLogo.getBoundingClientRect();
+            setShowTitle(logoRect.bottom <= 0);
+        };
+
+        updateScrollState();
+        window.addEventListener("scroll", updateScrollState, { passive: true });
+        window.addEventListener("resize", updateScrollState);
+
+        return () => {
+            window.removeEventListener("scroll", updateScrollState);
+            window.removeEventListener("resize", updateScrollState);
+        };
+    }, []);
+
     return (
-        <header className="site-nav">
+        <header className={`site-nav${isScrolled ? " scrolled" : ""}`}>
             <div className="nav-inner">
-                <a className="nav-logo" href="#top" aria-label="Village Wine and Spirits">
-                    <img
-                        src="/white-logo-real-grapes2.png"
-                        alt="Village Wine & Spirits Logo"
-                    />
+                <a className={`nav-logo${showTitle ? " visible" : ""}`} href="#top" aria-label="Village Wine and Spirits">
+                    Village Wine & Spirits
                 </a>
                 <nav className="nav-links" aria-label="Primary">
                     {navLinks.map((link) => (
