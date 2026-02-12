@@ -111,6 +111,7 @@ export default function EventList() {
 
     if (activeEvents.length === 0) {
         return (
+
             <div className="events-container" ref={eventsRef}>
                 <h3 className="section-title">Upcoming Events</h3>
                 <p style={{ fontStyle: 'italic', color: '#888', textAlign: 'center' }}>No upcoming events at the moment.<br />Check back soon!</p>
