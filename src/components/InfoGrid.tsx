@@ -36,7 +36,7 @@ export default function InfoGrid() {
             <div className="info-card contact-card" id="phone">
                 <h3>Visit Us or Call</h3>
                 <div className="phone-link-wrapper">
-                    <a className="phone-link" href="tel:6076428836">(607) 642-8836</a>
+                    <a className="phone-link" id="phone-link" href="tel:6076428836">(607) 642-8836</a>
                 </div>
                 <div id="address" style={{ textAlign: "center" }}>
                     <p className="contact-address" style={{ textAlign: "center" }}>20 South Main Street</p>
@@ -60,7 +60,7 @@ export default function InfoGrid() {
             {/* Hours Card with Dynamic Highlighting */}
             <div className="info-card hours-card" id="hours" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <h3>Hours</h3>
-                <div>
+                <div id="hours-list">
                     <p data-day className={isToday(1)}><span style={{ display: "inline-block", width: "110px" }}>Monday:</span> 10am - 8pm</p>
                     <p data-day className={isToday(2)}><span style={{ display: "inline-block", width: "110px" }}>Tuesday:</span> 10am - 8pm</p>
                     <p data-day className={isToday(3)}><span style={{ display: "inline-block", width: "110px" }}>Wednesday:</span> 10am - 8pm</p>

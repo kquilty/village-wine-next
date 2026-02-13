@@ -37,7 +37,38 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
     }, [hasPromotions]);
 
     const handleToggle = () => setIsOpen((open) => !open);
-    const handleLinkClick = () => setIsOpen(false);
+    const handleLinkClick = (href?: string) => {
+        setIsOpen(false);
+
+        const highlightMap: Record<string, { id: string; className: string }> = {
+            "#phone": { id: "phone-link", className: "phone-highlight" },
+            "#address": { id: "address", className: "address-highlight" },
+            "#hours": { id: "hours-list", className: "hours-highlight" },
+            "#events": { id: "events", className: "section-highlight" },
+            "#promotions": { id: "promotions", className: "section-highlight" },
+            "#offers": { id: "offers", className: "section-highlight" },
+            "#contact": { id: "contact", className: "contact-highlight" },
+        };
+
+        const highlightTarget = href ? highlightMap[href] : null;
+        if (!highlightTarget) {
+            return;
+        }
+
+        const targetElement = document.getElementById(highlightTarget.id);
+        if (!targetElement) {
+            return;
+        }
+
+        targetElement.classList.remove(highlightTarget.className);
+        window.setTimeout(() => {
+            targetElement.classList.add(highlightTarget.className);
+        }, 250);
+
+        window.setTimeout(() => {
+            targetElement.classList.remove(highlightTarget.className);
+        }, 1650);
+    };
 
     useEffect(() => {
         const updateScrollState = () => {
@@ -78,7 +109,7 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
                 </a>
                 <nav className="nav-links" aria-label="Primary">
                     {navLinks.map((link) => (
-                        <a key={link.href} href={link.href} className="nav-link">
+                        <a key={link.href} href={link.href} className="nav-link" onClick={() => handleLinkClick(link.href)}>
                             {link.label}
                         </a>
                     ))}
@@ -100,12 +131,12 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
                     className="nav-backdrop"
                     type="button"
                     aria-label="Close navigation"
-                    onClick={handleLinkClick}
+                    onClick={() => handleLinkClick()}
                 />
             ) : null}
             <nav className={`nav-menu${isOpen ? " open" : ""}`} aria-label="Mobile">
                 {navLinks.map((link) => (
-                    <a key={link.href} href={link.href} className="nav-link" onClick={handleLinkClick}>
+                    <a key={link.href} href={link.href} className="nav-link" onClick={() => handleLinkClick(link.href)}>
                         {link.mobileLabel}
                     </a>
                 ))}

@@ -113,7 +113,7 @@ export default function EventList() {
         return (
 
             <div className="events-container" id="events" ref={eventsRef}>
-                <h3 className="section-title">Upcoming Events</h3>
+                <h3 className="section-title" id="events-title">Upcoming Events</h3>
                 <p style={{ fontStyle: 'italic', color: '#888', textAlign: 'center' }}>No upcoming events at the moment.<br />Check back soon!</p>
             </div>
         );
@@ -121,7 +121,7 @@ export default function EventList() {
 
     return (
         <div className="events-container" id="events" ref={eventsRef}>
-            <h3 className="section-title">Upcoming Events</h3>
+            <h3 className="section-title" id="events-title">Upcoming Events</h3>
 
             {activeEvents.map((event) => (
                 <div key={event.id} className={event.flyer ? "event-item featured-event" : "event-item"}>

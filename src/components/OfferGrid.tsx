@@ -60,7 +60,7 @@ export default function OfferGrid() {
     return (
         <>
             <div className="offers-section" id="offers">
-                <h2>Year-Round Offers & Services</h2>
+                <h2 id="offers-title">Year-Round Offers & Services</h2>
                 <div className={offersGridClassName} ref={offersRef}>
                     {offers.map((offer) => {
                         const isClickable = Boolean(offer.clickable);

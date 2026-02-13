@@ -40,7 +40,7 @@ export default function Promotions() {
 
     return (
         <div className="promotions-container" id="promotions" ref={promotionsRef}>
-            <h3 className="section-title">Limited-Time Promotions</h3>
+            <h3 className="section-title" id="promotions-title">Limited-Time Promotions</h3>
             <div className={promotionsGridClassName}>
                 {promotions.map((promotion) => (
                     <div key={promotion.id} className="offer-card">

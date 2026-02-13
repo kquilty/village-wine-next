@@ -553,6 +553,54 @@ h1 {
     transform: scale(1.02);
 }
 
+.phone-highlight {
+    animation: phonePulse 1.4s ease-out;
+    border-radius: 10px;
+}
+
+.address-highlight {
+    animation: addressPulse 1.4s ease-out;
+    border-radius: 12px;
+}
+
+.hours-highlight {
+    animation: hoursPulse 1.4s ease-out;
+    border-radius: 12px;
+    padding: 6px 10px;
+    display: inline-block;
+}
+
+.contact-highlight {
+    animation: contactPulse 1.4s ease-out;
+    border-radius: 12px;
+}
+
+.section-highlight {
+    animation: sectionPulse 1.4s ease-out;
+    border-radius: 16px;
+}
+
+@keyframes phonePulse {
+    0% {
+        color: var(--gold-light);
+        text-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        box-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        background-color: rgba(138, 181, 154, 0);
+    }
+    40% {
+        color: #ffffff;
+        text-shadow: 0 0 18px rgba(138, 181, 154, 0.9), 0 0 32px rgba(138, 181, 154, 0.8);
+        box-shadow: 0 0 0 2px rgba(138, 181, 154, 0.6), 0 0 22px rgba(138, 181, 154, 0.7), inset 0 0 18px rgba(138, 181, 154, 0.35);
+        background-color: rgba(138, 181, 154, 0.25);
+    }
+    100% {
+        color: var(--gold-light);
+        text-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        box-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        background-color: rgba(138, 181, 154, 0);
+    }
+}
+
 .directions-link {
     display: inline-flex;
     align-items: center;
@@ -1477,5 +1525,89 @@ footer {
 
     .admin-form {
         grid-template-columns: 1fr;
+    }
+}
+
+@keyframes addressPulse {
+    0% {
+        color: var(--text-light);
+        text-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        box-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        background-color: rgba(138, 181, 154, 0);
+    }
+    40% {
+        color: #ffffff;
+        text-shadow: 0 0 16px rgba(138, 181, 154, 0.85), 0 0 28px rgba(138, 181, 154, 0.6);
+        box-shadow: 0 0 0 2px rgba(138, 181, 154, 0.55), 0 0 20px rgba(138, 181, 154, 0.6), inset 0 0 16px rgba(138, 181, 154, 0.3);
+        background-color: rgba(138, 181, 154, 0.2);
+    }
+    100% {
+        color: var(--text-light);
+        text-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        box-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        background-color: rgba(138, 181, 154, 0);
+    }
+}
+
+@keyframes hoursPulse {
+    0% {
+        color: var(--text-light);
+        text-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        box-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        background-color: rgba(138, 181, 154, 0);
+    }
+    40% {
+        color: #ffffff;
+        text-shadow: 0 0 16px rgba(138, 181, 154, 0.85), 0 0 28px rgba(138, 181, 154, 0.6);
+        box-shadow: 0 0 0 2px rgba(138, 181, 154, 0.55), 0 0 20px rgba(138, 181, 154, 0.6), inset 0 0 16px rgba(138, 181, 154, 0.3);
+        background-color: rgba(138, 181, 154, 0.2);
+    }
+    100% {
+        color: var(--text-light);
+        text-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        box-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        background-color: rgba(138, 181, 154, 0);
+    }
+}
+
+@keyframes contactPulse {
+    0% {
+        color: var(--text-light);
+        text-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        box-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        background-color: rgba(138, 181, 154, 0);
+    }
+    40% {
+        color: #ffffff;
+        text-shadow: 0 0 16px rgba(138, 181, 154, 0.85), 0 0 28px rgba(138, 181, 154, 0.6);
+        box-shadow: 0 0 0 2px rgba(138, 181, 154, 0.55), 0 0 20px rgba(138, 181, 154, 0.6), inset 0 0 16px rgba(138, 181, 154, 0.3);
+        background-color: rgba(138, 181, 154, 0.2);
+    }
+    100% {
+        color: var(--text-light);
+        text-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        box-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        background-color: rgba(138, 181, 154, 0);
+    }
+}
+
+@keyframes sectionPulse {
+    0% {
+        color: var(--gold-bright);
+        text-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        box-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        background-color: rgba(138, 181, 154, 0);
+    }
+    40% {
+        color: #ffffff;
+        text-shadow: 0 0 16px rgba(138, 181, 154, 0.85), 0 0 28px rgba(138, 181, 154, 0.6);
+        box-shadow: 0 0 0 2px rgba(138, 181, 154, 0.55), 0 0 18px rgba(138, 181, 154, 0.6);
+        background-color: rgba(138, 181, 154, 0.18);
+    }
+    100% {
+        color: var(--gold-bright);
+        text-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        box-shadow: 0 0 0 rgba(138, 181, 154, 0);
+        background-color: rgba(138, 181, 154, 0);
     }
 }

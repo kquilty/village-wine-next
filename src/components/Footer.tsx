@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
-        <div id="contact" className="contact-section">
-            <div className="email-section">
+        <div className="contact-section">
+            <div className="email-section" id="contact">
                 <p className="email-section-title">Contact Management</p>
                 <div className="email-list">
                     <a href="mailto:aleach@vwsnv.com" className="email-link">aleach@vwsnv.com</a>
