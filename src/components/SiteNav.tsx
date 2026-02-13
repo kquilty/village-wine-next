@@ -49,7 +49,7 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
             }
 
             const logoRect = heroLogo.getBoundingClientRect();
-            setShowTitle(logoRect.bottom <= 0);
+            setShowTitle(logoRect.top <= 0);
         };
 
         updateScrollState();
