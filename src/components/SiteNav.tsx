@@ -13,12 +13,12 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
 
     const navLinks = useMemo(() => {
         const baseLinks = [
-            { href: "#phone", label: "Phone" },
-            { href: "#address", label: "Directions" },
-            { href: "#hours", label: "Hours" },
-            { href: "#events", label: "Events" },
-            { href: "#offers", label: "Offers" },
-            { href: "#contact", label: "Contact" },
+            { href: "#phone", label: "Phone", mobileLabel: "Phone Number" },
+            { href: "#address", label: "Address", mobileLabel: "Get Directions" },
+            { href: "#hours", label: "Hours", mobileLabel: "Store Hours" },
+            { href: "#events", label: "Events", mobileLabel: "Upcoming Events" },
+            { href: "#offers", label: "Offers", mobileLabel: "Year-Round Offers" },
+            { href: "#contact", label: "Contact", mobileLabel: "Contact Info" },
         ];
 
         if (!hasPromotions) {
@@ -26,13 +26,13 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
         }
 
         return [
-            { href: "#phone", label: "Phone" },
-            { href: "#address", label: "Directions" },
-            { href: "#hours", label: "Hours" },
-            { href: "#events", label: "Events" },
-            { href: "#promotions", label: "Promotions" },
-            { href: "#offers", label: "Offers" },
-            { href: "#contact", label: "Contact" },
+            { href: "#phone", label: "Phone", mobileLabel: "Phone Number" },
+            { href: "#address", label: "Address", mobileLabel: "Get Directions" },
+            { href: "#hours", label: "Hours", mobileLabel: "Store Hours" },
+            { href: "#events", label: "Events", mobileLabel: "Upcoming Events" },
+            { href: "#promotions", label: "Promotions", mobileLabel: "Limited Promotions" },
+            { href: "#offers", label: "Offers", mobileLabel: "Year-Round Offers" },
+            { href: "#contact", label: "Contact", mobileLabel: "Contact Info" },
         ];
     }, [hasPromotions]);
 
@@ -106,7 +106,7 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
             <nav className={`nav-menu${isOpen ? " open" : ""}`} aria-label="Mobile">
                 {navLinks.map((link) => (
                     <a key={link.href} href={link.href} className="nav-link" onClick={handleLinkClick}>
-                        {link.label}
+                        {link.mobileLabel}
                     </a>
                 ))}
             </nav>
