@@ -62,6 +62,14 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
         };
     }, []);
 
+    useEffect(() => {
+        document.body.classList.toggle("nav-open", isOpen);
+
+        return () => {
+            document.body.classList.remove("nav-open");
+        };
+    }, [isOpen]);
+
     return (
         <header className={`site-nav${isScrolled ? " scrolled" : ""}`}>
             <div className="nav-inner">
@@ -87,6 +95,14 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
                     <span />
                 </button>
             </div>
+            {isOpen ? (
+                <button
+                    className="nav-backdrop"
+                    type="button"
+                    aria-label="Close navigation"
+                    onClick={handleLinkClick}
+                />
+            ) : null}
             <nav className={`nav-menu${isOpen ? " open" : ""}`} aria-label="Mobile">
                 {navLinks.map((link) => (
                     <a key={link.href} href={link.href} className="nav-link" onClick={handleLinkClick}>

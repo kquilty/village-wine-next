@@ -16,7 +16,7 @@
     --accent-blue: #3498db;
     --nav-height: 60px;
     --nav-bg: rgba(18, 22, 20, 0.6);
-    --nav-bg-scrolled: rgba(18, 22, 20, 0.78);
+    --nav-bg-scrolled: rgba(18, 22, 20, 0.88);
 }
 
 * {
@@ -188,6 +188,7 @@ body {
     transform: translate(8px, -6px);
     transform-origin: top right;
     transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1001;
 }
 
 .nav-menu.open {
@@ -196,6 +197,18 @@ body {
     transform: translate(0, 0);
     padding: 12px 24px 18px;
     overflow-y: auto;
+}
+
+.nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
 }
 
 .nav-menu .nav-link {
@@ -276,6 +289,11 @@ footer {
         0 0 60px rgba(0, 0, 0, 0.3);
     
     animation: fadeIn 1.5s ease-out;
+    transition: filter 0.2s ease;
+}
+
+body.nav-open .container {
+    filter: blur(3px);
 }
 
 /* --- Logo --- */
