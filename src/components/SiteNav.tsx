@@ -63,11 +63,11 @@ export default function SiteNav({ hasPromotions }: SiteNavProps) {
         targetElement.classList.remove(highlightTarget.className);
         window.setTimeout(() => {
             targetElement.classList.add(highlightTarget.className);
-        }, 250);
+        }, 550);
 
         window.setTimeout(() => {
             targetElement.classList.remove(highlightTarget.className);
-        }, 1650);
+        }, 2150);
     };
 
     useEffect(() => {
