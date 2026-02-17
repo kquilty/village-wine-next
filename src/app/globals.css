@@ -475,7 +475,7 @@ h1 {
 
 .info-card h3 {
     font-family: var(--font-display), 'SN Pro', serif;
-    background: linear-gradient(135deg, var(--gold-bright), var(--primary-gold));
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-bright));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -484,7 +484,7 @@ h1 {
     border-bottom: 1px solid rgba(212, 175, 55, 0.22);
     padding-bottom: 10px;
     display: block;
-    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+    filter: drop-shadow(0 2px 10px rgba(138, 181, 154, 0.45));
 }
 
 .info-card p, .info-card a {
@@ -718,6 +718,14 @@ button:focus {
     filter: drop-shadow(0 2px 8px rgba(111, 154, 130, 0.35));
 }
 
+#events-title {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-bright));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 10px rgba(138, 181, 154, 0.45));
+}
+
 .event-item {
     display: flex;
     align-items: flex-start;
@@ -857,6 +865,14 @@ button:focus {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.3));
+}
+
+#offers-title {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-bright));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 10px rgba(138, 181, 154, 0.45));
 }
 
 .offers-grid {
