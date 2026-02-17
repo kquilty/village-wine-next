@@ -235,7 +235,8 @@ body::before {
     width: 100vw;
     height: 100vh;
     height: 100lvh;
-    background-image: url('/wine_bg_2.webp');
+    /* background-image: url('/wine_bg_2.webp'); */
+    background-image: url('/bg1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
